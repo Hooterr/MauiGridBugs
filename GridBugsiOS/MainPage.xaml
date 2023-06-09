@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GridBugsiOS.MainPage"
+             x:Name="page">
+
+    <Grid>
+
+        <Grid RowDefinitions="auto,*,auto,*"
+              x:Name="grid"
+              RowSpacing="8">
+
+            <Label Grid.Row="0" Text="auto" Background="yellow"/>
+            <Label Grid.Row="1" Text="auto" x:Name="label1" Background="pink"/>
+            <Label Grid.Row="2" Text="auto" Background="red"/>
+
+
+            <ContentView Grid.Row="3"
+                         BackgroundColor="Green"
+                         x:Name="contentView"/>
+
+            <CollectionView
+                Grid.Row="3"
+                IsVisible="False"
+                x:Name="collection"/>
+
+            <Label Grid.Row="3" Text="*" Padding="30,0,0,0" VerticalOptions="Start" HorizontalOptions="Start"
+                   />
+            
+        </Grid>
+
+        <VerticalStackLayout
+            BackgroundColor="#Afffffff"
+            Spacing="4"
+            Padding="4"
+                IsVisible="True"
+                VerticalOptions="Start"
+                HorizontalOptions="End">
+                <Label Text="{Binding Source={Reference page}, Path=Height, StringFormat='page height: {0:N0}'}"/>
+                <Label Text="{Binding Source={Reference collection}, Path=Height, StringFormat='collection height: {0:N0}'}"/>
+                <Label Text="{Binding Source={Reference grid}, Path=Height, StringFormat='grid height: {0:N0}'}"/>
+                <Label Text="{Binding Source={Reference contentView}, Path=Height, StringFormat='contentView height: {0:N0}'}"/>
+                <Button Text="Toggle CollectionView" Clicked="Button_Clicked" />
+                <Button Text="Toggle Rowspacing" Clicked="Button_Clicked2"/>
+
+            </VerticalStackLayout>
+    </Grid>
+
+</ContentPage>
+
